@@ -13,7 +13,8 @@ else
     -v)
     echo "v1.0. Collaborate on this project! Github URL -> https://github.com/jrigassio/hivestats";;
     show)
-    echo $(python display-usage.py);;
+    table=$(python -c 'import usage; print usage.result()')
+    echo $table;;
     login)
     echo "optimal login" ;;
     *)
