@@ -1,11 +1,8 @@
 #!/bin/bash
 
 
-h_string=$'Welcome to Hivestats, a tool to help you navigate UC Berkeley EECS instructional computers. \nBuilt by James Rigassio, with inspiration taken from Allen Guo\'s Hivemind (http://aguo.us/hivemind/) \nAvailable commands / flags are:\n
-login: remotely connects you to the least busy server via SSH (prompts for credentials)\n
-show: displays a table of usage data for all EECS instructional servers\n
--v: gives version info\n
--h: displays this menu'
+h_string=$'Welcome to Hivestats, a tool to help you navigate UC Berkeley EECS instructional computers.\nBuilt by James Rigassio, with inspiration taken from Allen Guo\'s Hivemind (http://aguo.us/hivemind/) \n
+Available commands are listed below, call them in your terminal as "hivestats [cmd]".\n>>  login: remotely connects you to the least-busy server via SSH (prompts for credentials)\n>>  show: displays a table of usage data for all EECS instructional servers\n>>  -v: gives version info\n>>  -h: displays this menu'
 if [ -z "$1" ] || [ "$1" == "-h" ]; then
   echo "$h_string"
 else
@@ -16,7 +13,10 @@ else
     table=$(python -c 'import usage; print usage.result()')
     echo $table;;
     login)
-    echo "optimal login" ;;
+    read -p "Your class account username (i.e. cs61a-hug): " user
+    #replace derby.cs with actual lowest traffic server here
+    server=$(python -c 'import usage; print usage.least_busy()')
+    ssh $user@$server.berkeley.edu;;
     *)
     echo "Invalid argument: ${1}"
   esac

@@ -13,6 +13,9 @@ data = json_object['data']
 # print(data['hive1.cs']['load_avgs'])
 # print data['derby.cs']
 
-#returns a dict / 2d list to be turned into a table
+#returns a dict or 2d list to be turned into a table
 def result():
     return data['derby.cs']
+
+def least_busy():
+    return 'derby.cs'
