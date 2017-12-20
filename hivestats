@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 h_string=$'Welcome to Hivestats, a tool to help you navigate UC Berkeley EECS instructional computers.\nBuilt by James Rigassio, with inspiration taken from Allen Guo\'s Hivemind (http://aguo.us/hivemind/) \n
 Available commands are listed below, call them in your terminal as "hivestats [cmd]".\n>>  login: remotely connects you to the least-busy server via SSH (prompts for credentials)\n>>  show: displays a table of usage data for all EECS instructional servers\n>>  -v: gives version info\n>>  -h: displays this menu'
 if [ -z "$1" ] || [ "$1" == "-h" ]; then
@@ -10,11 +9,11 @@ else
     -v)
     echo "v1.0. Collaborate on this project! Github URL -> https://github.com/jrigassio/hivestats";;
     show)
-    table=$(python -c 'import usage; print usage.result()')
+    table=$(python -c 'import usage; print usage.table()')
     echo $table;;
     login)
-    read -p "Your class account username (i.e. cs61a-hug): " user
-    #replace derby.cs with actual lowest traffic server here
+    read -p "Your class account username (i.e. cs61b-hug): " user
+    #cs199-bsy
     server=$(python -c 'import usage; print usage.least_busy()')
     ssh $user@$server.berkeley.edu;;
     *)
