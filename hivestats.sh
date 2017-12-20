@@ -1,5 +1,5 @@
 #!/bin/bash
-h_string=$'Weclcome to Hivestats, a tool to help you navigate the UC Berkeley EECS instructional computers. \nBuilt by James Rigassio, with inspiration taken from Allen Guo\'s Hivemind (http://aguo.us/hivemind/) \nAvailable commands / flags are:\n
+h_string=$'Welcome to Hivestats, a tool to help you navigate the UC Berkeley EECS instructional computers. \nBuilt by James Rigassio, with inspiration taken from Allen Guo\'s Hivemind (http://aguo.us/hivemind/) \nAvailable commands / flags are:\n
 -l: Optimal Login; remotely connects you to the least used server via SSH (prompts for credentials)\n
 -d: Display; prints a table of all servers and usage to terminal output\n
 -v: Version; gives version info\n
