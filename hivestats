@@ -1,7 +1,7 @@
 #!/bin/bash
 
 h_string=$'Welcome to Hivestats, a tool to help you navigate UC Berkeley EECS instructional computers.\nBuilt by James Rigassio, with inspiration taken from Allen Guo\'s Hivemind (http://aguo.us/hivemind/) \n
-Available commands are listed below, call them in your terminal as "hivestats [cmd]".\n>>  login: remotely connects you to the least-busy server via SSH (prompts for credentials)\n>>  show: displays a table of usage data for all EECS instructional servers\n>>  -v: gives version info\n>>  -h: displays this menu'
+Available commands are listed below, call them in your terminal as "hivestats [cmd]".\n>>  login: remotely connects you to the least-busy server via SSH (prompts for credentials) ***\n>>  show: displays a table of usage data for all EECS instructional servers\n>>  -v: gives version info\n>>  -h: displays this menu\n***Note: By default, I have excluded servers of the form sXXX-XX.cs.berkeley.edu. \nTo allow connection to one of those servers, use the command: login -all'
 if [ -z "$1" ] || [ "$1" == "-h" ]; then
   echo "$h_string"
 else
@@ -13,8 +13,11 @@ else
     echo $table;;
     login)
     read -p "Your class account username (i.e. cs61b-hug): " user
-    #cs199-bsy
-    server=$(python -c 'import usage; print usage.least_busy()')
+    if [ "$2" == "-all" ]; then
+      server=$(python -c 'import usage; print usage.least_busy(False)')
+    else
+      server=$(python -c 'import usage; print usage.least_busy()')
+    fi
     ssh $user@$server.berkeley.edu;;
     *)
     echo "Invalid argument: ${1}"

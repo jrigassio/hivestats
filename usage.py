@@ -8,12 +8,6 @@ response = requests.get(url=secret_sauce)
 json_object = json.loads(response.text)
 data = json_object['data']
 
-
-#example prints of data
-# print(data['hive1.cs']['load_avgs'])
-# print data['derby.cs']
-
-#returns a dict or 2d list to be turned into a table
 def table():
     usage_matrix = []
     server_list = [x for x in data.keys() if data[x] != {}]
