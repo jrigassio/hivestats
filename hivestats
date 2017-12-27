@@ -1,6 +1,6 @@
 #!/bin/bash
 
-usage_path="/usr/bin/hive-cli/"
+usage_path="/usr/local/bin/hive-cli/"
 h_string=$'Welcome to Hivestats, a tool to help you navigate UC Berkeley EECS instructional computers.\nBuilt by James Rigassio, with inspiration taken from Allen Guo\'s Hivemind (http://aguo.us/hivemind/) \n
 Available commands are listed below, call them in your terminal as "hivestats [cmd]".\n>>  login: remotely connects you to the least-busy server via SSH (prompts for credentials) ***\n>>  show: displays a table of usage data for all EECS instructional servers\n>>  -v: gives version info\n>>  -h: displays this menu\n***Note: By default, I have excluded servers of the form sXXX-XX.cs.berkeley.edu. \nTo allow connection to one of those servers, use this command: login -all'
 if [ -z "$1" ] || [ "$1" == "-h" ]; then
@@ -10,14 +10,14 @@ else
     -v)
     echo "v1.0. Collaborate on this project! Github URL -> https://github.com/jrigassio/hivestats";;
     show)
-    table=$(python -c "import sys; sys.path.insert(0, '${usage_path}'); import usage; print usage.table()")
+    table=$(python -c "import sys; sys.path.insert(0, '${usage_path}'); import usage; print(usage.table())")
     echo $table;;
     login)
     read -p "Your class account username (i.e. cs61b-hug): " user
     if [ "$2" == "-all" ]; then
-      server=$(python -c "import sys; sys.path.insert(0, '${usage_path}'); import usage; print usage.least_busy(False)")
+      server=$(python -c "import sys; sys.path.insert(0, '${usage_path}'); import usage; print(usage.least_busy(False))")
     else
-      server=$(python -c "import sys; sys.path.insert(0, '${usage_path}'); import usage as usage; print usage.least_busy()")
+      server=$(python -c "import sys; sys.path.insert(0, '${usage_path}'); import usage; print(usage.least_busy())")
     fi
     ssh $user@$server.berkeley.edu;;
     *)
