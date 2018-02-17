@@ -17,7 +17,8 @@ def least_busy(hive_only=True):
     usage = {}
     if hive_only:
         server_list = [x for x in data.keys() if data[x] != {} and
-        not re.match("s[0-9]*-[0-9]*", x) and not re.match("hpse", x)]
+        not re.match("s[0-9]*-[0-9]*", x) and not re.match("hpse", x) \
+        and not re.match("raspi", x)]
     else:
         server_list = [x for x in data.keys() if data[x] != {}]
     for s in server_list:
