@@ -8,7 +8,8 @@ if [ -z "$1" ] || [ "$1" == "-h" ]; then
 else
   case "$1" in
     -v)
-    echo "v1.0. Collaborate on this project! Github URL -> https://github.com/jrigassio/hivestats";;
+    echo "v1.0."
+    echo "Collaborate on this project! Github URL -> https://github.com/jrigassio/hivestats";;
     show)
     table=$(python3 -c "import sys; sys.path.insert(0, '${usage_path}'); import usage; print(usage.table())")
     echo $table;;
