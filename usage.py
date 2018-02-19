@@ -10,8 +10,8 @@ data = json_object['data']
 
 def table():
     usage_matrix = []
-    server_list = [x for x in data.keys() if data[x] != {}]
-    return server_list
+    server_list = [str((x, data[x]['load_avgs'][1])) for x in data.keys() if data[x] != {}]
+    return "FORMAT: ([Server Name], [CPU Usage (%)])... \n" + (', ').join(server_list)
 
 def least_busy(hive_only=True):
     usage = {}
