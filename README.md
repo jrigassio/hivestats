@@ -10,10 +10,12 @@ You can monitor CPU usage [on Allan Guo's site](http://aguo.us/hivemind/) and pi
 2. Unzip the compressed directory, and navigate to it in your shell
 3. Run the install script:
 
-`bash install.sh`
+`./install.sh`
+* You may need to run this command with super-user privileges (`sudo bash install.sh`) 
 
 ### Uninstalling hivestats
 1. Navigate to the unzipped directory
 2. Run the uninstall script:
 
-`bash uninstall.sh`
+`./uninstall.sh`
+* Depending on your environment, you may need to run this command with super-user privileges (`sudo bash uninstall.sh`)
