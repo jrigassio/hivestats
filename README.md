@@ -6,7 +6,7 @@ You can monitor CPU usage [on Allan Guo's site](http://aguo.us/hivemind/) and pi
 
 ## Installation (for Mac OSX, Linux, and other UNIX-like systems)
 ### Installing hivestats
-1. Download the latest release
+1. Download the [latest release](https://github.com/jrigassio/hivestats/releases)
 2. Unzip the compressed directory, and navigate to it in your shell
 3. Run the install script:
 
